@@ -23,4 +23,9 @@ You'll need to create a "secrets.py" file with your wifi name and password, form
     WIFI_SSID = "WIFI NAME"
     WIFI_PASSWORD = "WIFI PASSWORD"
 
+### Versions
+
+main.py: basic moon phase display
+mainAnimated.py: animated version, pressing the A button on the Cosmic Unicorn toggles the animation
+
 ![moonPhase running on the Cosmic Unicorn](demo.jpg)
