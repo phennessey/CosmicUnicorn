@@ -1,19 +1,19 @@
 *moonPhase*
 
-Accurate Moon Phase display for Cosmic Unicorn!
+Accurate Moon Phase display for Cosmic Unicorn!  
 2024 By Patrick Hennessey
 
 ### Info
 
-Connects to your WiFi network to get Unix time in order to generate correct moon phase
+Connects to your WiFi network to get Unix time in order to generate correct moon phase  
 Formula adapted from post: https://community.facer.io/t/moon-phase-formula-updated/35691/8
 
-Formula starts at 0 and advances to 1, which is a full cycle.
+Formula starts at 0 and advances to 1, which is a full cycle.  
     0 = new moon, 0.5 = full moon, etc.
 
 Image `0.png` should be a new moon image, middle image should be a full moon, etc.
 
-Very acccurate moon images adapted from NASA's Scientific Visualization Studio:
+Very acccurate moon images adapted from NASA's Scientific Visualization Studio:  
 https://svs.gsfc.nasa.gov/5187
 
 ### Requirements
