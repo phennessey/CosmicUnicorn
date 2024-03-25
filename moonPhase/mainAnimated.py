@@ -1,4 +1,4 @@
-# Accurate Moon Phase with Animation for Cosmic Unicorn!
+# Accurate Moon Phase display for Cosmic Unicorn!
 # 2024 By Patrick Hennessey
 
 # This version includes an animation feature! Press the A button to animate the moon phases
@@ -15,8 +15,10 @@
 # https://svs.gsfc.nasa.gov/5187
 
 # You'll need to create a "secrets.py" file with your wifi name and password, formatted as follows:
+
 # WIFI_SSID = "WIFI NAME"
 # WIFI_PASSWORD = "WIFI PASSWORD"
+
 
 import time
 import network
@@ -33,7 +35,8 @@ display = PicoGraphics(DISPLAY)
 png = PNG(display)
 
 imgCount = 32 # should match moon image file count
-ANIMATE = False
+ANIMATE = False # launch without animation
+CHECK_TIME = True # launch with a time-check requirement
 
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
@@ -55,38 +58,34 @@ def draw_moon(n):
 def change_mode(pin):
     global ANIMATE
     ANIMATE = not ANIMATE
+    print(ANIMATE)
     
 # Using the IRQ method to detect button presses 
 # to prevent multiple firings if the button is held.
 mode_button = machine.Pin(cu.SWITCH_A, machine.Pin.IN, machine.Pin.PULL_UP)
 mode_button.irq(trigger=machine.Pin.IRQ_FALLING, handler=change_mode)
 
-ANIM_RESET = False
-CHECK_TIME = True
-n = currentPhase = calc_phase()
 
 while True:
     
-    if (time.time() - startTime) % 1200 == 0: # Updates every 20 minutes
+    if (time.time() - startTime) % 1200 == 0 and not ANIMATE: # Updates every 20 minutes
         if CHECK_TIME:
-            currentPhase = calc_phase()
+            n = currentPhase = calc_phase()
             CHECK_TIME = not CHECK_TIME
     else:
         CHECK_TIME = True
         
     if ANIMATE:
-        ANIM_RESET = False
         draw_moon(n)
         n += 1
         if n == imgCount: n = 0
     else:
-        if n != currentPhase and not ANIM_RESET:
+        if n != currentPhase:
             draw_moon(n)
             n += 1
             if n == imgCount: n = 0
         else:
             draw_moon(currentPhase)
-            ANIM_RESET = True
             
     cu.update(display)            
     time.sleep(0.02) # Set this value to higher or lower depending on your desired animation speed
