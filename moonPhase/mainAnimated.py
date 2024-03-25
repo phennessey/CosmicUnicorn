@@ -30,7 +30,7 @@ from picographics import PicoGraphics, DISPLAY_COSMIC_UNICORN as DISPLAY
 from pngdec import PNG
 
 cu = CosmicUnicorn()
-cu.set_brightness(1)
+cu.set_brightness(1) # 1 = max brightness, can be set to any value between 0 and 1
 display = PicoGraphics(DISPLAY)
 png = PNG(display)
 
