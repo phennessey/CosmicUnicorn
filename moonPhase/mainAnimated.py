@@ -52,7 +52,7 @@ def calc_phase():
     return round( ((time.time() - 583084) / 2551443) % 1 * imgCount ) % imgCount
 
 def draw_moon(n):
-    png.open_file(f'moon/{n}.png')
+    png.open_file(f'img/{n}.png')
     png.decode()
 
 def change_mode(pin):
