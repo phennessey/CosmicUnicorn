@@ -42,7 +42,7 @@ except OSError:
 def draw_moon():
     currentPhase = ((time.time() - 583084) / 2551443) % 1
     phaseImg = round(currentPhase * imgCount ) % imgCount
-    png.open_file(f'moon/{phaseImg}.png')
+    png.open_file(f'img/{phaseImg}.png')
     png.decode()
     
 while True:
