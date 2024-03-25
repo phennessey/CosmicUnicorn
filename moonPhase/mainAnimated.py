@@ -58,7 +58,6 @@ def draw_moon(n):
 def change_mode(pin):
     global ANIMATE
     ANIMATE = not ANIMATE
-    print(ANIMATE)
     
 # Using the IRQ method to detect button presses 
 # to prevent multiple firings if the button is held.
