@@ -48,8 +48,19 @@ try:
 except OSError:
     machine.reset()
     
+# Simple calculation
+#def calc_phase():
+    #return round( ((time.time() - 583084) / 2551443) % 1 * imgCount ) % imgCount
+
+# More accurate calculation
 def calc_phase():
-    return round( ((time.time() - 583084) / 2551443) % 1 * imgCount ) % imgCount
+    cTime = time.time()*1000
+    moon_phase = (((cTime/2551442844-0.228535)
+               +0.00591997*math.sin(cTime/5023359217+3.1705094)
+               +0.017672776*math.sin(cTime/378923968-1.5388144)
+               -0.0038844429*math.sin(cTime/437435791+2.0017235)
+               -0.00041488*math.sin(cTime/138539900-1.236334))%1)
+    return round( moon_phase * imgCount ) % imgCount
 
 def draw_moon(n):
     png.open_file(f'img/{n}.png')
